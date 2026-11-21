@@ -5,6 +5,7 @@ import { NewsSection } from "./components/NewsSection";
 import { CharacterSection } from "./components/CharacterSection";
 import { FeaturesSection } from "./components/FeaturesSection";
 import { EndingAndFooter } from "./components/EndingAndFooter";
+import { LoadingScreen } from "./components/LoadingScreen";
 import { PrivacyPolicyPage } from "./pages/PrivacyPolicyPage";
 import { TermsOfServicePage } from "./pages/TermsOfServicePage";
 
@@ -19,6 +20,7 @@ function ScrollToTop() {
 function HomePage() {
   return (
     <main className="min-h-screen w-full">
+      <LoadingScreen />
       <HeroSection />
       <NewsSection />
       <CharacterSection />
