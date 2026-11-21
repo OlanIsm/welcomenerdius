@@ -114,9 +114,9 @@ export function CharacterSection() {
         </div>
 
         {/* 3-Column Showcase Grid */}
-        <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-6">
+        <div className="grid grid-cols-1 items-center gap-10 lg:min-h-[510px] lg:grid-cols-12 lg:gap-6">
           {/* LEFT COLUMN: Character Dossier & Backstory */}
-          <div className="order-2 flex flex-col items-start lg:order-1 lg:col-span-4 lg:pr-10 xl:pr-14">
+          <div className="order-2 flex flex-col items-start lg:order-1 lg:col-span-4 lg:min-h-[470px] lg:pr-10 xl:pr-14">
             {/* Faction / Archetype Pill */}
             <div className="mb-1.5 inline-flex items-center gap-2 rounded-full border-2 border-[#2B1C10] bg-[#4A3321] px-3.5 py-1 font-body text-xs font-extrabold tracking-wider text-[#FFF1CC] uppercase">
               <span
@@ -148,7 +148,7 @@ export function CharacterSection() {
             </p>
 
             {/* Controls Row: Voice Clip + Animation Switcher */}
-            <div className="mt-4 flex flex-wrap items-center gap-2.5">
+            <div className="mt-4 flex min-h-[44px] flex-wrap items-center gap-2.5">
               {character.voiceUrl && (
                 <button
                   type="button"
