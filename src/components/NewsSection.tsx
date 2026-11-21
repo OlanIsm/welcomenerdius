@@ -338,13 +338,15 @@ export function NewsSection() {
                     Follow Us
                   </span>
                   <a
-                    href="#community"
+                    href="https://www.instagram.com/_nerdius_?avpt=ZDNlZDc0MzIxNw=="
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="group inline-flex items-center gap-1.5 bg-[#4EA1F3] px-4 py-2.5 font-display text-xs font-black tracking-wide text-white transition-colors hover:bg-[#3A8EE3] sm:px-5 sm:text-sm"
                     style={{
                       clipPath: "polygon(12px 0, 100% 0, 100% 100%, 0 100%)",
                     }}
                   >
-                    <span className="pl-2">@nerdius.game</span>
+                    <span className="pl-2">@_nerdius_</span>
                     <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
                   </a>
                 </div>

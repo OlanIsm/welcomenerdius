@@ -10,10 +10,10 @@ const QUICK_LINKS = [
   { label: "Features", href: "#features" },
 ];
 
-// shortcut: placeholder social URLs until official Nerdius handles are confirmed
+// shortcut: Discord and YouTube URLs still placeholder until official links are provided
 const SOCIAL_LINKS = [
   { label: "Discord", href: "https://discord.com", bg: "bg-[#5865F2] hover:bg-[#4752C4]", icon: MessageCircle },
-  { label: "Instagram", href: "https://instagram.com", bg: "bg-[#E1306C] hover:bg-[#C8235B]", icon: Instagram },
+  { label: "Instagram", href: "https://www.instagram.com/_nerdius_?avpt=ZDNlZDc0MzIxNw==", bg: "bg-[#E1306C] hover:bg-[#C8235B]", icon: Instagram },
   { label: "YouTube", href: "https://youtube.com", bg: "bg-[#FF0000] hover:bg-[#D90000]", icon: Youtube },
   { label: "Play Web", href: PLAY_URL, bg: "bg-[#2B1C10] hover:bg-[#3F2A1A]", icon: Globe },
 ];
