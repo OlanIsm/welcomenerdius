@@ -71,7 +71,7 @@ export const NEWS_ITEMS: NewsItem[] = [
       "Each character features hand-drawn idle and combat animations crafted frame by frame.",
     ],
     bannerType: "image",
-    bannerImage: "/assets/news/hub-wallpaper.webp",
+    bannerImage: "/assets/features/floating-island.webp",
   },
   {
     id: "badge-tiers-update",
@@ -126,7 +126,7 @@ export const COMMUNITY_EVENTS: CommunityEvent[] = [
     title: "[Study Event] Scroll Scholar Challenge",
     description:
       "Upload your toughest lecture notes, conquer 5 adventure quizzes with an A grade, and claim your Tier 5 Scroll Scholar badge!",
-    bannerImage: "/assets/news/hub-wallpaper.webp",
+    bannerImage: "/assets/features/floating-island.webp",
     badgeImage: "/assets/news/badge-scholar.webp",
   },
   {

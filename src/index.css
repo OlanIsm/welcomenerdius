@@ -80,6 +80,25 @@ body {
   background: #a87b3b;
 }
 
+.scroll-parchment::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scroll-parchment::-webkit-scrollbar-track {
+  background: rgba(43, 28, 16, 0.08);
+  border-radius: 999px;
+}
+
+.scroll-parchment::-webkit-scrollbar-thumb {
+  background: rgba(139, 94, 44, 0.55);
+  border-radius: 999px;
+  border: none;
+}
+
+.scroll-parchment::-webkit-scrollbar-thumb:hover {
+  background: rgba(110, 72, 30, 0.8);
+}
+
 :focus-visible {
   outline: 3px solid #ffb830;
   outline-offset: 3px;

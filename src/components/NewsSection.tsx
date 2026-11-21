@@ -49,7 +49,7 @@ export function NewsSection() {
         </div>
 
         {/* Two-Column Board Layout (Reference: NIKKE News) */}
-        <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-12 lg:gap-9">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:items-stretch lg:gap-9">
           {/* LEFT COLUMN: Tabbed Notice Board */}
           <div className="lg:col-span-7">
             {/* Folder Tabs */}
@@ -111,13 +111,13 @@ export function NewsSection() {
                       </span>
                     </div>
 
-                    {/* Right: MC Waving Mascot */}
-                    <div className="relative z-10 -mr-2 -mb-5 flex shrink-0 items-end sm:mr-1">
+                    {/* Right: Olan Mascot (transparent cutout) */}
+                    <div className="relative z-10 -mr-2 -mb-4 flex shrink-0 items-end sm:mr-1">
                       <img
-                        src="/assets/news/mc-wave.png"
-                        alt="MC waving hello"
+                        src="/assets/features/mc.webp"
+                        alt="Olan welcoming adventurers"
                         draggable={false}
-                        className="h-44 w-auto object-contain drop-shadow-[0_8px_14px_rgba(43,28,16,0.22)] sm:h-56"
+                        className="h-44 w-auto object-contain drop-shadow-[0_8px_14px_rgba(43,28,16,0.24)] sm:h-52"
                       />
                     </div>
                   </div>
@@ -209,86 +209,114 @@ export function NewsSection() {
             </div>
           </div>
 
-          {/* RIGHT COLUMN: Active Events & Community Follow Panel */}
-          <div className="lg:col-span-5 lg:mt-[42px]">
-            <div className="overflow-hidden rounded-2xl border-[2.5px] border-[#2B1C10] bg-[#FFFDF7] shadow-[0_14px_34px_rgba(43,28,16,0.12)]">
-              {/* Top Panel Header */}
-              <div className="flex items-center justify-between border-b-2 border-[#2B1C10] bg-[#4A3321] px-5 py-2.5 text-[#FFF4DC]">
-                <span className="font-display text-xs font-black tracking-widest uppercase">
-                  Guild Events &amp; Highlights
-                </span>
-                <span className="inline-flex items-center gap-1.5 font-body text-xs font-bold text-[#FFD059]">
-                  <span className="h-2 w-2 rounded-full bg-[#8BE04E]" />
-                  Live Now
-                </span>
-              </div>
+          {/* RIGHT COLUMN: Active Events & Community Follow on Hand-Drawn Scroll */}
+          <div className="flex lg:col-span-5 lg:pt-[14px]">
+            <div className="relative mx-auto flex w-full max-w-[520px] flex-col drop-shadow-[0_14px_24px_rgba(43,28,16,0.18)] lg:h-[600px]">
+              {/* Scroll Top Cap */}
+              <img
+                src="/assets/ui/scroll-top.png"
+                alt=""
+                aria-hidden="true"
+                draggable={false}
+                className="block w-full shrink-0 select-none"
+              />
 
-              {/* Event Cards Stack */}
-              <div className="divide-y divide-[#EFE5CE] p-4 sm:p-5">
-                {COMMUNITY_EVENTS.map((ev, index) => (
-                  <article
-                    key={ev.id}
-                    className={index === 0 ? "pb-5" : "pt-5"}
-                  >
-                    {/* Status & Time Row */}
-                    <div className="mb-2.5 flex items-center justify-between text-xs font-extrabold">
-                      <span className="rounded-md bg-[#E6F4D7] px-2.5 py-1 text-[#2E6118]">
-                        {ev.status}
-                      </span>
-                      <span className="inline-flex items-center gap-1 text-[#7D6145]">
-                        <Clock className="h-3.5 w-3.5" />
-                        {ev.timeRemaining}
-                      </span>
-                    </div>
+              {/* Scroll Repeating Middle Body */}
+              <div
+                className="-my-[2px] flex min-h-0 flex-1 flex-col px-[13%] py-2"
+                style={{
+                  backgroundImage: "url('/assets/ui/scroll-mid.png')",
+                  backgroundRepeat: "repeat-y",
+                  backgroundSize: "100% auto",
+                }}
+              >
+                {/* Header inside Scroll */}
+                <div className="mb-3 flex shrink-0 items-center justify-between border-b-2 border-[#2B1C10]/20 pb-2">
+                  <span className="font-display text-xs font-black tracking-widest text-[#2B1C10] uppercase sm:text-sm">
+                    Guild Events
+                  </span>
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-[#2B1C10] px-2.5 py-0.5 font-body text-[0.7rem] font-extrabold text-[#FFE082]">
+                    <span className="h-1.5 w-1.5 rounded-full bg-[#8BE04E]" />
+                    Live Now
+                  </span>
+                </div>
 
-                    {/* Visual Event Banner */}
-                    <div className="relative h-32 overflow-hidden rounded-xl border-2 border-[#2B1C10]/15 sm:h-36">
-                      <img
-                        src={ev.bannerImage}
-                        alt={ev.title}
-                        className="h-full w-full object-cover object-center"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-r from-[#2B1C10]/65 via-[#2B1C10]/25 to-transparent" />
-                      <div className="absolute inset-0 flex items-center justify-between px-4">
-                        <span className="max-w-[68%] font-display text-base font-black leading-tight text-white drop-shadow-[0_2px_6px_rgba(0,0,0,0.45)] sm:text-lg">
-                          {ev.title.replace(/^\[[^\]]+\]\s*/, "")}
+                {/* Scrollable Event Cards Stack */}
+                <div className="scroll-parchment min-h-0 flex-1 divide-y-2 divide-[#2B1C10]/15 overflow-y-auto pr-2">
+                  {COMMUNITY_EVENTS.map((ev, index) => (
+                    <article
+                      key={ev.id}
+                      className={index === 0 ? "pb-4" : "pt-4 pb-2"}
+                    >
+                      {/* Status & Time Row */}
+                      <div className="mb-2 flex items-center justify-between text-xs font-extrabold">
+                        <span className="rounded-md border border-[#2B1C10]/25 bg-[#DDF28B] px-2 py-0.5 text-[#2B1C10]">
+                          {ev.status}
                         </span>
-                        <img
-                          src={ev.badgeImage}
-                          alt=""
-                          aria-hidden="true"
-                          className="h-16 w-16 shrink-0 object-contain drop-shadow-[0_4px_10px_rgba(0,0,0,0.35)] sm:h-20 sm:w-20"
-                        />
+                        <span className="inline-flex items-center gap-1 text-[#5C4430]">
+                          <Clock className="h-3.5 w-3.5" />
+                          {ev.timeRemaining}
+                        </span>
                       </div>
-                    </div>
 
-                    {/* Event Title & Description */}
-                    <h3 className="mt-3 font-display text-[1.02rem] font-black text-[#2B1C10]">
-                      {ev.title}
-                    </h3>
-                    <p className="mt-1 font-body text-sm font-semibold leading-relaxed text-[#5C4430]">
-                      {ev.description}
-                    </p>
-                  </article>
-                ))}
+                      {/* Visual Event Banner */}
+                      <div className="relative h-28 overflow-hidden rounded-xl border-2 border-[#2B1C10] sm:h-32">
+                        <img
+                          src={ev.bannerImage}
+                          alt={ev.title}
+                          className="h-full w-full object-cover object-center"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-r from-[#2B1C10]/70 via-[#2B1C10]/25 to-transparent" />
+                        <div className="absolute inset-0 flex items-center justify-between px-3.5">
+                          <span className="max-w-[68%] font-display text-sm font-black leading-tight text-white drop-shadow-[0_2px_6px_rgba(0,0,0,0.45)] sm:text-base">
+                            {ev.title.replace(/^\[[^\]]+\]\s*/, "")}
+                          </span>
+                          <img
+                            src={ev.badgeImage}
+                            alt=""
+                            aria-hidden="true"
+                            className="h-14 w-14 shrink-0 object-contain drop-shadow-[0_4px_10px_rgba(0,0,0,0.35)] sm:h-16 sm:w-16"
+                          />
+                        </div>
+                      </div>
+
+                      {/* Event Title & Description */}
+                      <h3 className="mt-2.5 font-display text-[0.95rem] font-black text-[#2B1C10]">
+                        {ev.title}
+                      </h3>
+                      <p className="mt-1 font-body text-xs font-bold leading-relaxed text-[#4A3321] sm:text-[0.84rem]">
+                        {ev.description}
+                      </p>
+                    </article>
+                  ))}
+                </div>
+
+                {/* Bottom Follow Us Strip inside Scroll */}
+                <div className="mt-3 flex shrink-0 items-center justify-between overflow-hidden rounded-xl border-2 border-[#2B1C10] bg-[#FFF8E6]">
+                  <span className="px-3.5 py-2.5 font-display text-[0.72rem] font-black tracking-wider text-[#4A3321] uppercase">
+                    Follow Us
+                  </span>
+                  <a
+                    href="#community"
+                    className="group inline-flex items-center gap-1.5 bg-[#4EA1F3] px-4 py-2.5 font-display text-xs font-black tracking-wide text-white transition-colors hover:bg-[#3A8EE3] sm:px-5 sm:text-sm"
+                    style={{
+                      clipPath: "polygon(12px 0, 100% 0, 100% 100%, 0 100%)",
+                    }}
+                  >
+                    <span className="pl-2">@nerdius.game</span>
+                    <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
+                  </a>
+                </div>
               </div>
 
-              {/* Bottom "Follow Us" Strip (Reference: Image 1) */}
-              <div className="flex items-center justify-between border-t-2 border-[#EFE5CE] bg-[#F7F0DF]">
-                <span className="px-5 py-3 font-display text-xs font-black tracking-wider text-[#6E533B] uppercase">
-                  Follow Us
-                </span>
-                <a
-                  href="#community"
-                  className="group inline-flex items-center gap-2 bg-[#4EA1F3] px-6 py-3 font-display text-sm font-black tracking-wide text-white transition-colors hover:bg-[#3A8EE3]"
-                  style={{
-                    clipPath: "polygon(14px 0, 100% 0, 100% 100%, 0 100%)",
-                  }}
-                >
-                  <span className="pl-2">@nerdius.game</span>
-                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-                </a>
-              </div>
+              {/* Scroll Bottom Cap */}
+              <img
+                src="/assets/ui/scroll-bot.png"
+                alt=""
+                aria-hidden="true"
+                draggable={false}
+                className="block w-full shrink-0 select-none"
+              />
             </div>
           </div>
         </div>

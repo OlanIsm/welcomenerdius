@@ -38,7 +38,7 @@ export const FEATURES: FeatureSlide[] = [
     title: "Soothing Hand-Drawn Fantasy Realms",
     description:
       "Journey across lush Savannahs, Fibonacci deserts, and volcanic peaks with smooth cartoon animations.",
-    bgImage: "/assets/news/hub-wallpaper.webp",
+    bgImage: "/assets/features/oceanlandscape.png",
     foregroundImage: "/assets/features/island-kingdom.webp",
     foregroundAlt: "Hand-drawn Kingdom island with math symbol trees",
     accentColor: "#8BE04E",
