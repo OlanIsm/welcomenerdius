@@ -76,7 +76,7 @@ export function CharacterSection() {
       {/* Dramatic Diagonal Accent Ribbon (Reference: Image 2 NIKKE Character) */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-y-0 left-[38%] hidden w-[28%] -skew-x-12 transition-colors duration-500 lg:block"
+        className="pointer-events-none absolute inset-y-0 left-[37%] hidden w-[26%] -skew-x-12 transition-colors duration-500 lg:block"
         style={{ backgroundColor: character.accentSoft }}
       />
       <div
@@ -110,9 +110,9 @@ export function CharacterSection() {
         {/* 3-Column Showcase Grid */}
         <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-6">
           {/* LEFT COLUMN: Character Dossier & Backstory */}
-          <div className="order-2 flex flex-col items-start lg:order-1 lg:col-span-4">
+          <div className="order-2 flex flex-col items-start lg:order-1 lg:col-span-4 lg:pr-10 xl:pr-14">
             {/* Faction / Archetype Pill */}
-            <div className="inline-flex items-center gap-2 rounded-t-lg border-x-2 border-t-2 border-[#2B1C10] bg-[#4A3321] px-3.5 py-1 font-body text-xs font-extrabold tracking-wider text-[#FFF1CC] uppercase">
+            <div className="mb-1.5 inline-flex items-center gap-2 rounded-full border-2 border-[#2B1C10] bg-[#4A3321] px-3.5 py-1 font-body text-xs font-extrabold tracking-wider text-[#FFF1CC] uppercase">
               <span
                 className="h-2 w-2 rounded-full"
                 style={{ backgroundColor: character.accentColor }}
@@ -120,21 +120,26 @@ export function CharacterSection() {
               {character.faction}
             </div>
 
-            {/* Name Plaque */}
-            <div
-              className="w-full max-w-sm rounded-xl rounded-tl-none border-[2.5px] border-[#2B1C10] bg-[#2B1C10] px-6 py-4 text-white shadow-[0_10px_24px_rgba(43,28,16,0.18)]"
-              style={{
-                borderBottomWidth: "5px",
-                borderBottomColor: character.accentColor,
-              }}
-            >
-              <h3 className="font-display text-3xl font-black tracking-tight sm:text-4xl">
-                {character.name}
-              </h3>
-              <p className="mt-0.5 font-body text-sm font-bold text-[#E6D5BC]">
-                {character.role}
-              </p>
+            {/* Woodplank Name Plaque */}
+            <div className="relative w-full max-w-[300px] drop-shadow-[0_8px_14px_rgba(43,28,16,0.22)]">
+              <img
+                src="/assets/ui/plank-bar.webp"
+                alt=""
+                aria-hidden="true"
+                draggable={false}
+                className="block h-auto w-full select-none object-contain"
+              />
+              <div className="absolute inset-0 flex flex-col items-center justify-center px-6 pb-1 text-center">
+                <h3 className="font-playful woodplank-text-shadow text-3xl leading-none tracking-wide text-white sm:text-[2.15rem]">
+                  {character.name}
+                </h3>
+              </div>
             </div>
+
+            {/* Role Subtitle */}
+            <p className="mt-2 font-display text-sm font-black tracking-wide text-[#5C4430]">
+              {character.role}
+            </p>
 
             {/* Controls Row: Voice Clip + Animation Switcher */}
             <div className="mt-4 flex flex-wrap items-center gap-2.5">
@@ -211,7 +216,7 @@ export function CharacterSection() {
           </div>
 
           {/* RIGHT COLUMN: Heading + Portrait Roster Grid (Reference: Image 2) */}
-          <div className="order-3 flex flex-col items-center lg:col-span-4 lg:items-end">
+          <div className="order-3 flex flex-col items-center lg:col-span-4 lg:items-end lg:pl-10 xl:pl-14">
             {/* Desktop Heading */}
             <div className="mb-8 hidden text-right lg:block">
               <h2
