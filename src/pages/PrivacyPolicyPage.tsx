@@ -12,7 +12,7 @@ export function PrivacyPolicyPage() {
             <span>Back to Home</span>
           </Link>
           <Link to="/">
-            <img src="/assets/nerdius_title.png" alt="Nerdius" className="h-10 w-auto object-contain" />
+            <img src="/assets/nerdius_title.webp" alt="Nerdius" className="h-10 w-auto object-contain" />
           </Link>
         </div>
       </header>

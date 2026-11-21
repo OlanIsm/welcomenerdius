@@ -37,7 +37,7 @@ export const FEATURES: FeatureSlide[] = [
     foregroundAlt: "Olan casting a Crescent Staff attack",
     foregroundSprite: {
       jsonUrl: "/assets/characters/olan-attack/spritesheet.json",
-      imageUrl: "/assets/characters/olan-attack/spritesheet.png",
+      imageUrl: "/assets/characters/olan-attack/spritesheet.webp",
       fps: 10,
     },
     accentColor: "#5AA9F8",
@@ -48,7 +48,7 @@ export const FEATURES: FeatureSlide[] = [
     title: "Soothing Hand-Drawn Fantasy Realms",
     description:
       "Journey across lush Savannahs, Fibonacci deserts, and volcanic peaks with smooth cartoon animations.",
-    bgImage: "/assets/features/oceanlandscape.png",
+    bgImage: "/assets/features/oceanlandscape.webp",
     foregroundImage: "/assets/features/island-kingdom.webp",
     foregroundAlt: "Hand-drawn Kingdom island with math symbol trees",
     accentColor: "#8BE04E",

@@ -100,7 +100,7 @@ export function SavannahParallaxCanvas() {
     // Load MC walk and Nerd idle spritesheets
     loadSpriteSheet(
       "/assets/characters/mc-walk/spritesheet.json",
-      "/assets/characters/mc-walk/spritesheet.png"
+      "/assets/characters/mc-walk/spritesheet.webp"
     )
       .then((sprite) => {
         if (!cancelled) mcSprite = sprite;
@@ -109,7 +109,7 @@ export function SavannahParallaxCanvas() {
 
     loadSpriteSheet(
       "/assets/characters/nerd-well-actually/spritesheet.json",
-      "/assets/characters/nerd-well-actually/spritesheet.png"
+      "/assets/characters/nerd-well-actually/spritesheet.webp"
     )
       .then((sprite) => {
         if (!cancelled) nerdSprite = sprite;

@@ -36,7 +36,7 @@ export function Navbar() {
           className="group inline-flex items-center focus-visible:rounded-xl"
         >
           <img
-            src="/assets/nerdius_title.png"
+            src="/assets/nerdius_title.webp"
             alt="Nerdius"
             className={`w-auto select-none object-contain drop-shadow-[0_4px_14px_rgba(24,52,92,0.3)] transition-all duration-300 group-hover:scale-[1.03] ${
               scrolled

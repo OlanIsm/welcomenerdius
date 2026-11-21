@@ -24,7 +24,7 @@ export function FeaturesSection() {
       className="relative overflow-hidden border-t-[3px] border-[#2B1C10]/20 py-20 sm:py-24 lg:py-28"
       style={{
         backgroundColor: "#42B5FA",
-        backgroundImage: "url('/assets/features/oceanlandscape.png')",
+        backgroundImage: "url('/assets/features/oceanlandscape.webp')",
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
         backgroundPosition: "center",
@@ -141,7 +141,7 @@ export function FeaturesSection() {
                   {/* Top Mini Logo + Feature Tag */}
                   <div className="relative z-10 flex items-center justify-between px-4 pt-4">
                     <img
-                      src="/assets/nerdius_title.png"
+                      src="/assets/nerdius_title.webp"
                       alt="Nerdius"
                       draggable={false}
                       className="h-7 w-auto object-contain drop-shadow-[0_2px_6px_rgba(0,0,0,0.55)]"

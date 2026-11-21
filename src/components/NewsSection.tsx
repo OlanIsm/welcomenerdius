@@ -138,7 +138,7 @@ export function NewsSection() {
                     {/* Left: Nerdius Title + Bold NOTICE lettering */}
                     <div className="relative z-10 flex max-w-[60%] flex-col items-start">
                       <img
-                        src="/assets/nerdius_title.png"
+                        src="/assets/nerdius_title.webp"
                         alt="Nerdius"
                         draggable={false}
                         className="mb-2 h-9 w-auto object-contain drop-shadow-[0_2px_6px_rgba(24,52,92,0.28)] sm:h-11"
@@ -185,7 +185,7 @@ export function NewsSection() {
                       />
                     )}
                     <img
-                      src="/assets/nerdius_title.png"
+                      src="/assets/nerdius_title.webp"
                       alt="Nerdius"
                       draggable={false}
                       className="absolute top-3 left-4 h-8 w-auto object-contain drop-shadow-[0_2px_8px_rgba(0,0,0,0.45)] sm:h-10"
@@ -263,18 +263,18 @@ export function NewsSection() {
             <div className="relative mx-auto flex w-full max-w-[520px] flex-col drop-shadow-[0_14px_24px_rgba(43,28,16,0.18)] lg:h-[600px]">
               {/* Scroll Top Cap */}
               <img
-                src="/assets/ui/scroll-top.png"
+                src="/assets/ui/scroll-top.webp"
                 alt=""
                 aria-hidden="true"
                 draggable={false}
                 className="block w-full shrink-0 select-none"
               />
 
-              {/* Scroll Repeating Middle Body (clipped 4% sides to hide source PNG stray edge dots) */}
+              {/* Scroll Repeating Middle Body (clipped 4% sides to hide source stray edge dots) */}
               <div
                 className="-my-[2px] flex min-h-0 flex-1 flex-col px-[13%] py-2"
                 style={{
-                  backgroundImage: "url('/assets/ui/scroll-mid.png')",
+                  backgroundImage: "url('/assets/ui/scroll-mid.webp')",
                   backgroundRepeat: "repeat-y",
                   backgroundSize: "100% auto",
                   clipPath: "inset(0 4% 0 4%)",
@@ -363,7 +363,7 @@ export function NewsSection() {
 
               {/* Scroll Bottom Cap */}
               <img
-                src="/assets/ui/scroll-bot.png"
+                src="/assets/ui/scroll-bot.webp"
                 alt=""
                 aria-hidden="true"
                 draggable={false}

@@ -86,7 +86,7 @@ export const NEWS_ITEMS: NewsItem[] = [
       "Maintain your study streak to level up your Keep Up badge all the way to Tier 5.",
     ],
     bannerType: "image",
-    bannerImage: "/assets/news/badges.png",
+    bannerImage: "/assets/news/badges.webp",
     bannerFit: "contain",
   },
   {

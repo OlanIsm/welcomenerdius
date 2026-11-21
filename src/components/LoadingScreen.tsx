@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 const CRITICAL_ASSETS = [
-  "/assets/nerdius_title.png",
+  "/assets/nerdius_title.webp",
   "/assets/ui/plank-bar.webp",
   "/assets/savannah/1.webp",
   "/assets/savannah/2.webp",
@@ -14,8 +14,8 @@ const CRITICAL_ASSETS = [
   "/assets/savannah/9.webp",
   "/assets/savannah/10.webp",
   "/assets/savannah/11.webp",
-  "/assets/characters/mc-walk/spritesheet.png",
-  "/assets/characters/nerd-well-actually/spritesheet.png",
+  "/assets/characters/mc-walk/spritesheet.webp",
+  "/assets/characters/nerd-well-actually/spritesheet.webp",
 ];
 
 function preloadImage(src: string): Promise<void> {
@@ -99,17 +99,23 @@ export function LoadingScreen() {
       <div className="relative w-[260px] select-none sm:w-[360px] md:w-[440px]">
         {/* Unfilled Base Silhouette */}
         <img
-          src="/assets/nerdius_title.png"
+          src="/assets/nerdius_title.webp"
           alt="Nerdius"
+          loading="eager"
+          decoding="sync"
+          fetchPriority="high"
           draggable={false}
           className="block h-auto w-full object-contain opacity-22 grayscale"
         />
 
         {/* Full-Color Reveal Clipped Left-to-Right by Real Asset Progress */}
         <img
-          src="/assets/nerdius_title.png"
+          src="/assets/nerdius_title.webp"
           alt=""
           aria-hidden="true"
+          loading="eager"
+          decoding="sync"
+          fetchPriority="high"
           draggable={false}
           className="absolute inset-0 block h-auto w-full object-contain transition-[clip-path] duration-200 ease-out"
           style={{

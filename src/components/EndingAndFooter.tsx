@@ -230,7 +230,7 @@ export function EndingAndFooter() {
             {/* App Icon + Game Info */}
             <div className="flex items-center gap-4">
               <img
-                src="/assets/app-icon.png"
+                src="/assets/app-icon.webp"
                 alt="Nerdius App Icon"
                 draggable={false}
                 className="h-16 w-16 rounded-2xl border-2 border-[#FFB830]/40 bg-[#231912] object-contain p-1.5"
@@ -244,7 +244,7 @@ export function EndingAndFooter() {
 
             {/* Official Title Logo */}
             <img
-              src="/assets/nerdius_title.png"
+              src="/assets/nerdius_title.webp"
               alt="Nerdius"
               draggable={false}
               className="h-12 w-auto select-none object-contain sm:h-14"
