@@ -6,17 +6,15 @@ export function FeaturesSection() {
   const [activeIndex, setActiveIndex] = useState(0);
   const total = FEATURES.length;
 
-  const prevIndex = (activeIndex - 1 + total) % total;
-  const nextIndex = (activeIndex + 1) % total;
+  const goPrev = () => setActiveIndex((prev) => (prev - 1 + total) % total);
+  const goNext = () => setActiveIndex((prev) => (prev + 1) % total);
 
-  const goPrev = () => setActiveIndex(prevIndex);
-  const goNext = () => setActiveIndex(nextIndex);
-
-  const visibleSlides = [
-    { slide: FEATURES[prevIndex], index: prevIndex, position: "left" as const },
-    { slide: FEATURES[activeIndex], index: activeIndex, position: "center" as const },
-    { slide: FEATURES[nextIndex], index: nextIndex, position: "right" as const },
-  ];
+  // Compute signed shortest circular offset (-1 left, 0 center, 1 right, 2 hidden back)
+  const getOffset = (idx: number) => {
+    let diff = (idx - activeIndex + total) % total;
+    if (diff > total / 2) diff -= total;
+    return diff;
+  };
 
   return (
     <section
@@ -61,23 +59,30 @@ export function FeaturesSection() {
       />
 
       <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
-        {/* Top-Left Heading (Reference: Image 3 NIKKE Features) */}
-        <div className="mb-12 sm:mb-14">
+        {/* Top-Left Heading with Woodplank Subtitle */}
+        <div className="mb-10 sm:mb-12">
           <h2
             id="features-heading"
             className="hero-text-shadow font-display text-4xl font-black tracking-[-0.03em] text-white sm:text-5xl lg:text-6xl"
           >
             FEATURES
           </h2>
-          <div className="mt-2 inline-flex items-center rounded-lg border-2 border-[#2B1C10] bg-[#2B1C10] px-4 py-1.5 text-[#FFE082] shadow-md">
-            <span className="font-display text-xs font-black tracking-widest uppercase sm:text-sm">
+          <div className="relative mt-2 inline-flex w-[240px] items-center justify-center drop-shadow-[0_6px_12px_rgba(18,52,98,0.35)] sm:w-[275px]">
+            <img
+              src="/assets/ui/plank-bar.webp"
+              alt=""
+              aria-hidden="true"
+              draggable={false}
+              className="block h-auto w-full select-none object-contain"
+            />
+            <span className="font-playful woodplank-text-shadow absolute inset-0 flex items-center justify-center pb-0.5 text-sm tracking-wider text-white sm:text-base">
               Adventure With Nerdius
             </span>
           </div>
         </div>
 
-        {/* 3-Card Carousel Stage */}
-        <div className="relative flex items-center justify-center gap-3 sm:gap-6 lg:gap-8">
+        {/* 3-Card Smooth Ease-In-Out Carousel Stage */}
+        <div className="relative flex items-center justify-center gap-3 sm:gap-6">
           {/* Left Arrow */}
           <button
             type="button"
@@ -88,19 +93,34 @@ export function FeaturesSection() {
             <ChevronsLeft className="h-6 w-6" />
           </button>
 
-          {/* Cards Track */}
-          <div className="flex w-full max-w-4xl items-center justify-center gap-4 sm:gap-6">
-            {visibleSlides.map(({ slide, index, position }) => {
-              const isCenter = position === "center";
+          {/* Animated Cards Stage (all slides stay mounted so CSS transform eases smoothly) */}
+          <div className="relative h-[450px] w-full max-w-[920px] sm:h-[500px]">
+            {FEATURES.map((slide, idx) => {
+              const offset = getOffset(idx);
+              const isCenter = offset === 0;
+              const isLeft = offset === -1;
+              const isRight = offset === 1;
+              const isHidden = !isCenter && !isLeft && !isRight;
+
+              let positionClass =
+                "translate-x-[-50%] scale-75 opacity-0 pointer-events-none z-0";
+              if (isCenter) {
+                positionClass =
+                  "translate-x-[-50%] scale-100 opacity-100 z-20 shadow-[0_22px_44px_rgba(16,44,84,0.42)]";
+              } else if (isLeft) {
+                positionClass =
+                  "translate-x-[-50%] md:translate-x-[calc(-50%-290px)] lg:translate-x-[calc(-50%-325px)] scale-[0.84] opacity-0 md:opacity-80 md:grayscale-[20%] z-10 cursor-pointer hover:md:opacity-95 shadow-[0_12px_28px_rgba(16,44,84,0.28)]";
+              } else if (isRight) {
+                positionClass =
+                  "translate-x-[-50%] md:translate-x-[calc(-50%+290px)] lg:translate-x-[calc(-50%+325px)] scale-[0.84] opacity-0 md:opacity-80 md:grayscale-[20%] z-10 cursor-pointer hover:md:opacity-95 shadow-[0_12px_28px_rgba(16,44,84,0.28)]";
+              }
+
               return (
                 <article
-                  key={`${slide.id}-${position}`}
-                  onClick={!isCenter ? () => setActiveIndex(index) : undefined}
-                  className={`relative overflow-hidden rounded-2xl border-[3px] border-[#2B1C10] bg-[#1E1712] transition-all duration-300 ${
-                    isCenter
-                      ? "z-20 h-[440px] w-full max-w-[320px] scale-100 opacity-100 shadow-[0_22px_44px_rgba(16,44,84,0.42)] sm:h-[490px] sm:max-w-[350px]"
-                      : "hidden h-[380px] w-[240px] shrink-0 cursor-pointer opacity-80 grayscale-[20%] shadow-[0_12px_28px_rgba(16,44,84,0.28)] hover:scale-[1.03] hover:opacity-95 md:block lg:h-[420px] lg:w-[265px]"
-                  }`}
+                  key={slide.id}
+                  onClick={!isCenter && !isHidden ? () => setActiveIndex(idx) : undefined}
+                  aria-hidden={isHidden}
+                  className={`absolute top-1/2 left-1/2 h-[440px] w-[300px] -translate-y-1/2 overflow-hidden rounded-2xl border-[3px] border-[#2B1C10] bg-[#1E1712] transition-all duration-500 ease-in-out sm:h-[490px] sm:w-[345px] ${positionClass}`}
                 >
                   {/* Card Full-Bleed Background */}
                   <img
@@ -139,26 +159,22 @@ export function FeaturesSection() {
                       src={slide.foregroundImage}
                       alt={slide.foregroundAlt}
                       draggable={false}
-                      className={`max-h-full w-auto object-contain drop-shadow-[0_12px_18px_rgba(0,0,0,0.45)] transition-transform duration-300 ${
-                        isCenter ? "scale-100" : "scale-95"
-                      }`}
+                      className="max-h-full w-auto object-contain drop-shadow-[0_12px_18px_rgba(0,0,0,0.45)]"
                     />
                   </div>
 
                   {/* Bottom Title & Description */}
                   <div className="absolute inset-x-0 bottom-0 z-20 px-5 pb-5 pt-3">
-                    <h3
-                      className={`font-display font-black leading-tight tracking-tight text-white drop-shadow-[0_2px_6px_rgba(0,0,0,0.6)] ${
-                        isCenter ? "text-xl sm:text-2xl" : "text-lg"
-                      }`}
-                    >
+                    <h3 className="font-display text-xl font-black leading-tight tracking-tight text-white drop-shadow-[0_2px_6px_rgba(0,0,0,0.6)] sm:text-2xl">
                       {slide.title}
                     </h3>
-                    {isCenter && (
-                      <p className="mt-2 font-body text-sm font-bold leading-relaxed text-[#F3E9D7]">
-                        {slide.description}
-                      </p>
-                    )}
+                    <p
+                      className={`mt-2 font-body text-sm font-bold leading-relaxed text-[#F3E9D7] transition-opacity duration-500 ease-in-out ${
+                        isCenter ? "opacity-100" : "opacity-0"
+                      }`}
+                    >
+                      {slide.description}
+                    </p>
                   </div>
                 </article>
               );
@@ -192,7 +208,7 @@ export function FeaturesSection() {
                 aria-selected={active}
                 aria-label={`Show feature: ${item.title}`}
                 onClick={() => setActiveIndex(idx)}
-                className={`h-3 cursor-pointer rounded-full border-2 border-[#2B1C10] transition-all duration-200 ${
+                className={`h-3 cursor-pointer rounded-full border-2 border-[#2B1C10] transition-all duration-300 ease-in-out ${
                   active
                     ? "w-9 bg-[#FFB830]"
                     : "w-3 bg-white/85 hover:bg-[#FFE082]"

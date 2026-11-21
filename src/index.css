@@ -48,6 +48,8 @@ html {
   font-family: var(--font-body);
   color: var(--color-ink);
   background-color: #f7f3e8;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 body {
@@ -55,29 +57,18 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
 }
 
 ::selection {
   background-color: rgba(255, 184, 48, 0.42);
   color: var(--color-ink);
-}
-
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: #f0eadc;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #c79a58;
-  border-radius: 999px;
-  border: 2px solid #f0eadc;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #a87b3b;
 }
 
 .scroll-parchment::-webkit-scrollbar {
