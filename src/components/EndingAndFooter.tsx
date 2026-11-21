@@ -1,21 +1,14 @@
 import { Link } from "react-router-dom";
-import { ArrowUp, Mail, MessageCircle, Instagram, Youtube, Globe } from "lucide-react";
+import { ArrowUp, Mail, Instagram } from "lucide-react";
 
 const PLAY_URL = "https://nerdius.vercel.app";
+const INSTAGRAM_URL = "https://www.instagram.com/_nerdius_?avpt=ZDNlZDc0MzIxNw==";
 
 const QUICK_LINKS = [
   { label: "Hero", href: "#top" },
   { label: "News", href: "#news" },
   { label: "Characters", href: "#characters" },
   { label: "Features", href: "#features" },
-];
-
-// shortcut: Discord and YouTube URLs still placeholder until official links are provided
-const SOCIAL_LINKS = [
-  { label: "Discord", href: "https://discord.com", bg: "bg-[#5865F2] hover:bg-[#4752C4]", icon: MessageCircle },
-  { label: "Instagram", href: "https://www.instagram.com/_nerdius_?avpt=ZDNlZDc0MzIxNw==", bg: "bg-[#E1306C] hover:bg-[#C8235B]", icon: Instagram },
-  { label: "YouTube", href: "https://youtube.com", bg: "bg-[#FF0000] hover:bg-[#D90000]", icon: Youtube },
-  { label: "Play Web", href: PLAY_URL, bg: "bg-[#2B1C10] hover:bg-[#3F2A1A]", icon: Globe },
 ];
 
 export function EndingAndFooter() {
@@ -40,6 +33,74 @@ export function EndingAndFooter() {
           className="pointer-events-none absolute -bottom-6 left-4 select-none font-display text-[clamp(4.5rem,12vw,9.5rem)] font-black leading-none tracking-[-0.04em] text-white/[0.06] uppercase"
         >
           NERDIUS
+        </div>
+
+        {/* Left Treasure Trove: Chest, Coins & Gems */}
+        <div aria-hidden="true" className="pointer-events-none absolute -bottom-4 -left-6 z-[5] hidden select-none md:block">
+          <img
+            src="/assets/ui/chest.webp"
+            alt=""
+            draggable={false}
+            className="h-36 w-auto -rotate-6 object-contain drop-shadow-[0_12px_18px_rgba(10,20,38,0.45)] lg:h-44"
+          />
+          <img
+            src="/assets/ui/coins.webp"
+            alt=""
+            draggable={false}
+            className="absolute -bottom-1 left-24 h-20 w-auto rotate-12 object-contain drop-shadow-[0_8px_12px_rgba(10,20,38,0.4)] lg:left-28 lg:h-24"
+          />
+          <img
+            src="/assets/ui/gem.webp"
+            alt=""
+            draggable={false}
+            className="absolute -top-6 left-6 h-16 w-auto -rotate-12 object-contain drop-shadow-[0_8px_14px_rgba(10,20,38,0.4)] lg:h-20"
+          />
+          <img
+            src="/assets/ui/coins.webp"
+            alt=""
+            draggable={false}
+            className="absolute bottom-8 -left-2 h-16 w-auto -rotate-12 object-contain drop-shadow-[0_6px_10px_rgba(10,20,38,0.35)] lg:h-20"
+          />
+          <img
+            src="/assets/ui/gem.webp"
+            alt=""
+            draggable={false}
+            className="absolute bottom-14 left-28 h-14 w-auto rotate-18 object-contain drop-shadow-[0_8px_12px_rgba(10,20,38,0.38)] lg:left-36 lg:h-16"
+          />
+        </div>
+
+        {/* Right Treasure Trove: Chest, Coins & Gems */}
+        <div aria-hidden="true" className="pointer-events-none absolute -bottom-4 -right-6 z-[5] hidden select-none md:block">
+          <img
+            src="/assets/ui/chest.webp"
+            alt=""
+            draggable={false}
+            className="h-36 w-auto scale-x-[-1] rotate-6 object-contain drop-shadow-[0_12px_18px_rgba(10,20,38,0.45)] lg:h-44"
+          />
+          <img
+            src="/assets/ui/coins.webp"
+            alt=""
+            draggable={false}
+            className="absolute -bottom-1 right-24 h-20 w-auto -rotate-12 object-contain drop-shadow-[0_8px_12px_rgba(10,20,38,0.4)] lg:right-28 lg:h-24"
+          />
+          <img
+            src="/assets/ui/gem.webp"
+            alt=""
+            draggable={false}
+            className="absolute -top-7 right-8 h-16 w-auto rotate-12 object-contain drop-shadow-[0_8px_14px_rgba(10,20,38,0.4)] lg:h-20"
+          />
+          <img
+            src="/assets/ui/coins.webp"
+            alt=""
+            draggable={false}
+            className="absolute bottom-10 -right-1 h-16 w-auto rotate-12 object-contain drop-shadow-[0_6px_10px_rgba(10,20,38,0.35)] lg:h-20"
+          />
+          <img
+            src="/assets/ui/gem.webp"
+            alt=""
+            draggable={false}
+            className="absolute bottom-14 right-28 h-14 w-auto -rotate-18 object-contain drop-shadow-[0_8px_12px_rgba(10,20,38,0.38)] lg:right-36 lg:h-16"
+          />
         </div>
 
         <div className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 items-end gap-10 px-5 pt-14 pb-12 sm:px-8 lg:grid-cols-12 lg:items-center lg:gap-8 lg:px-12 lg:py-16">
@@ -98,22 +159,16 @@ export function EndingAndFooter() {
               <p className="mb-3 font-display text-xs font-black tracking-widest text-[#FFE082] uppercase">
                 [ Connect With Nerdius ]
               </p>
-              <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-                {SOCIAL_LINKS.map((social) => {
-                  const Icon = social.icon;
-                  return (
-                    <a
-                      key={social.label}
-                      href={social.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`inline-flex items-center justify-center gap-2 rounded-xl border-2 border-[#2B1C10] px-4 py-2.5 font-display text-xs font-black tracking-wider text-white uppercase shadow-md transition hover:-translate-y-0.5 ${social.bg}`}
-                    >
-                      <Icon className="h-4 w-4" />
-                      <span>{social.label}</span>
-                    </a>
-                  );
-                })}
+              <div className="flex flex-wrap items-center gap-3">
+                <a
+                  href={INSTAGRAM_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2.5 rounded-xl border-2 border-[#2B1C10] bg-[#E1306C] px-6 py-3 font-display text-xs font-black tracking-wider text-white uppercase shadow-md transition hover:-translate-y-0.5 hover:bg-[#C8235B]"
+                >
+                  <Instagram className="h-4 w-4" />
+                  <span>Instagram · @_nerdius_</span>
+                </a>
               </div>
             </div>
           </div>
