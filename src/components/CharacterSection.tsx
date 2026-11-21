@@ -5,6 +5,7 @@ import { SpriteCanvas, preloadSpriteSheet } from "./SpriteCanvas";
 
 export function CharacterSection() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [prevIndex, setPrevIndex] = useState<number | null>(null);
   const [animIndex, setAnimIndex] = useState(0);
   const [isPlayingVoice, setIsPlayingVoice] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -39,7 +40,9 @@ export function CharacterSection() {
   }, []);
 
   const selectCharacter = (index: number) => {
+    if (index === activeIndex) return;
     stopVoice();
+    setPrevIndex(activeIndex);
     setActiveIndex(index);
     setAnimIndex(0);
   };
@@ -71,17 +74,20 @@ export function CharacterSection() {
     <section
       id="characters"
       aria-labelledby="characters-heading"
-      className="relative overflow-hidden border-t-2 border-[#E7DEC8] bg-[#F2E9D5] py-20 sm:py-24 lg:py-28"
+      className="relative overflow-hidden border-t-2 border-[#E7DEC8] py-20 transition-colors duration-700 ease-in-out sm:py-24 lg:py-28"
+      style={{
+        backgroundColor: `color-mix(in srgb, ${character.accentSoft} 26%, #F2E9D5)`,
+      }}
     >
-      {/* Dramatic Diagonal Accent Ribbon (Reference: Image 2 NIKKE Character) */}
+      {/* Dramatic Diagonal Accent Ribbon with smooth color transition */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-y-0 left-[37%] hidden w-[26%] -skew-x-12 transition-colors duration-500 lg:block"
+        className="pointer-events-none absolute inset-y-0 left-[37%] hidden w-[26%] -skew-x-12 transition-colors duration-700 ease-in-out lg:block"
         style={{ backgroundColor: character.accentSoft }}
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-y-0 left-[63%] hidden w-2.5 -skew-x-12 opacity-80 transition-colors duration-500 lg:block"
+        className="pointer-events-none absolute inset-y-0 left-[63%] hidden w-2.5 -skew-x-12 opacity-80 transition-colors duration-700 ease-in-out lg:block"
         style={{ backgroundColor: character.accentColor }}
       />
 
@@ -196,22 +202,46 @@ export function CharacterSection() {
             </div>
           </div>
 
-          {/* CENTER COLUMN: Live Animated Character Visualization */}
+          {/* CENTER COLUMN: Live Animated Character with Slide-Left / Enter-From-Right Transition */}
           <div className="order-1 flex flex-col items-center justify-center lg:order-2 lg:col-span-4">
-            <div className="relative flex h-[300px] w-full max-w-[380px] items-center justify-center sm:h-[360px] lg:h-[420px]">
+            <div className="relative flex h-[300px] w-full max-w-[380px] items-center justify-center overflow-hidden sm:h-[360px] lg:h-[420px]">
               {/* Soft grounded studio shadow */}
               <div
                 aria-hidden="true"
                 className="pointer-events-none absolute bottom-6 h-8 w-52 rounded-full bg-[#2B1C10]/16 blur-md"
               />
-              <SpriteCanvas
-                jsonUrl={currentAnim.jsonUrl}
-                imageUrl={currentAnim.imageUrl}
-                fps={currentAnim.fps}
-                fallbackSrc={character.portraitUrl}
-                alt={`${character.name} — ${currentAnim.label} animation`}
-                className="relative z-10 h-full w-full drop-shadow-[0_14px_20px_rgba(43,28,16,0.18)]"
-              />
+              {CHARACTERS.map((char, idx) => {
+                const isActive = idx === activeIndex;
+                const isExiting = idx === prevIndex && !isActive;
+                const anim = isActive ? currentAnim : char.animations[0];
+
+                let slideClass =
+                  "translate-x-28 opacity-0 scale-95 pointer-events-none";
+                if (isActive) {
+                  slideClass = "translate-x-0 opacity-100 scale-100 z-10";
+                } else if (isExiting) {
+                  slideClass =
+                    "-translate-x-28 opacity-0 scale-95 pointer-events-none z-0";
+                }
+
+                return (
+                  <div
+                    key={char.id}
+                    aria-hidden={!isActive}
+                    className={`absolute inset-0 transition-all duration-500 ease-in-out ${slideClass}`}
+                  >
+                    <SpriteCanvas
+                      jsonUrl={anim.jsonUrl}
+                      imageUrl={anim.imageUrl}
+                      fps={anim.fps}
+                      active={isActive}
+                      fallbackSrc={char.portraitUrl}
+                      alt={`${char.name} — ${anim.label} animation`}
+                      className="h-full w-full drop-shadow-[0_14px_20px_rgba(43,28,16,0.18)]"
+                    />
+                  </div>
+                );
+              })}
             </div>
           </div>
 

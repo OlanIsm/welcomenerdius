@@ -16,7 +16,6 @@ interface LoadedSheet {
   frames: FrameRect[];
 }
 
-// Module-level cache so switching characters or toggling animations is instant (0ms)
 const spriteCache = new Map<string, Promise<LoadedSheet>>();
 const resolvedCache = new Map<string, LoadedSheet>();
 
@@ -46,7 +45,9 @@ export function preloadSpriteSheet(
       }),
     ]);
 
-    if (!res.ok) throw new Error(`Failed to fetch ${jsonUrl}`);
+    if (!res.ok || image.naturalWidth === 0) {
+      throw new Error(`Failed to load sprite ${jsonUrl}`);
+    }
     const data: SpriteSheetData = await res.json();
     const keys = Object.keys(data.frames).sort((a, b) =>
       a.localeCompare(b, undefined, { numeric: true })
@@ -56,7 +57,6 @@ export function preloadSpriteSheet(
     resolvedCache.set(cacheKey, loaded);
     return loaded;
   })().catch((err) => {
-    // Evict failed entry so retry works
     spriteCache.delete(cacheKey);
     throw err;
   });
@@ -71,6 +71,7 @@ interface SpriteCanvasProps {
   fps?: number;
   alt: string;
   fallbackSrc?: string;
+  active?: boolean;
   className?: string;
 }
 
@@ -80,6 +81,7 @@ export function SpriteCanvas({
   fps = 8,
   alt,
   fallbackSrc,
+  active = true,
   className = "",
 }: SpriteCanvasProps) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -101,11 +103,8 @@ export function SpriteCanvas({
 
     const size = 420;
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
-    if (canvas.width !== size * dpr || canvas.height !== size * dpr) {
-      canvas.width = size * dpr;
-      canvas.height = size * dpr;
-    }
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    canvas.width = size * dpr;
+    canvas.height = size * dpr;
 
     const startLoop = (sheet: LoadedSheet) => {
       if (cancelled || sheet.frames.length === 0) return;
@@ -115,11 +114,13 @@ export function SpriteCanvas({
       const drawFrame = (now: number) => {
         if (cancelled) return;
         const elapsed = (now - start) / 1000;
-        const idx = prefersReducedMotion
-          ? 0
-          : Math.floor(elapsed * fps) % sheet.frames.length;
+        const idx =
+          prefersReducedMotion || !active
+            ? 0
+            : Math.floor(elapsed * fps) % sheet.frames.length;
         const f = sheet.frames[idx];
 
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
         ctx.clearRect(0, 0, size, size);
 
         const scale = Math.min((size * 0.92) / f.w, (size * 0.92) / f.h);
@@ -130,12 +131,11 @@ export function SpriteCanvas({
 
         ctx.drawImage(sheet.image, f.x, f.y, f.w, f.h, drawX, drawY, drawW, drawH);
 
-        if (!prefersReducedMotion) {
+        if (!prefersReducedMotion && active) {
           rafId = requestAnimationFrame(drawFrame);
         }
       };
 
-      // Draw frame 0 immediately on the same tick (zero blank flash)
       drawFrame(start);
     };
 
@@ -146,16 +146,14 @@ export function SpriteCanvas({
       setReady(false);
       preloadSpriteSheet(jsonUrl, imageUrl)
         .then(startLoop)
-        .catch(() => {
-          /* fallback image remains visible */
-        });
+        .catch(() => {});
     }
 
     return () => {
       cancelled = true;
       cancelAnimationFrame(rafId);
     };
-  }, [cacheKey, jsonUrl, imageUrl, fps]);
+  }, [cacheKey, jsonUrl, imageUrl, fps, active]);
 
   return (
     <div className={`relative ${className}`}>
@@ -164,14 +162,14 @@ export function SpriteCanvas({
           src={fallbackSrc}
           alt={alt}
           draggable={false}
-          className="absolute inset-0 m-auto h-[72%] w-[72%] object-contain opacity-90"
+          className="absolute inset-0 m-auto h-[72%] w-[72%] object-contain"
         />
       )}
       <canvas
         ref={canvasRef}
         role="img"
         aria-label={alt}
-        className={`h-full w-full object-contain transition-opacity duration-150 ${
+        className={`h-full w-full object-contain transition-opacity duration-200 ${
           ready ? "opacity-100" : "opacity-0"
         }`}
       />

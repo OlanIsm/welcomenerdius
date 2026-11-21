@@ -35,71 +35,119 @@ export function EndingAndFooter() {
           NERDIUS
         </div>
 
-        {/* Left Treasure Trove: Chest, Coins & Gems */}
-        <div aria-hidden="true" className="pointer-events-none absolute -bottom-4 -left-6 z-[5] hidden select-none md:block">
+        {/* Left Treasure Trove (swapped orientation facing inward + messy scattered loot) */}
+        <div aria-hidden="true" className="pointer-events-none absolute -bottom-4 -left-4 z-[5] hidden select-none md:block">
           <img
             src="/assets/ui/chest.webp"
             alt=""
             draggable={false}
-            className="h-36 w-auto -rotate-6 object-contain drop-shadow-[0_12px_18px_rgba(10,20,38,0.45)] lg:h-44"
+            className="h-40 w-auto scale-x-[-1] rotate-6 object-contain drop-shadow-[0_12px_18px_rgba(10,20,38,0.45)] lg:h-48"
           />
           <img
             src="/assets/ui/coins.webp"
             alt=""
             draggable={false}
-            className="absolute -bottom-1 left-24 h-20 w-auto rotate-12 object-contain drop-shadow-[0_8px_12px_rgba(10,20,38,0.4)] lg:left-28 lg:h-24"
-          />
-          <img
-            src="/assets/ui/gem.webp"
-            alt=""
-            draggable={false}
-            className="absolute -top-6 left-6 h-16 w-auto -rotate-12 object-contain drop-shadow-[0_8px_14px_rgba(10,20,38,0.4)] lg:h-20"
+            className="absolute -bottom-1 left-24 h-20 w-auto -rotate-12 object-contain drop-shadow-[0_8px_12px_rgba(10,20,38,0.4)] lg:left-32 lg:h-24"
           />
           <img
             src="/assets/ui/coins.webp"
             alt=""
             draggable={false}
-            className="absolute bottom-8 -left-2 h-16 w-auto -rotate-12 object-contain drop-shadow-[0_6px_10px_rgba(10,20,38,0.35)] lg:h-20"
+            className="absolute bottom-1 left-44 h-16 w-auto rotate-24 object-contain drop-shadow-[0_6px_10px_rgba(10,20,38,0.38)] lg:left-52 lg:h-20"
+          />
+          <img
+            src="/assets/ui/coins.webp"
+            alt=""
+            draggable={false}
+            className="absolute bottom-8 left-2 h-16 w-auto rotate-12 object-contain drop-shadow-[0_6px_10px_rgba(10,20,38,0.35)] lg:h-20"
+          />
+          <img
+            src="/assets/ui/coins.webp"
+            alt=""
+            draggable={false}
+            className="absolute -bottom-2 left-60 h-14 w-auto -rotate-18 object-contain drop-shadow-[0_6px_10px_rgba(10,20,38,0.35)] lg:left-72 lg:h-16"
           />
           <img
             src="/assets/ui/gem.webp"
             alt=""
             draggable={false}
-            className="absolute bottom-14 left-28 h-14 w-auto rotate-18 object-contain drop-shadow-[0_8px_12px_rgba(10,20,38,0.38)] lg:left-36 lg:h-16"
+            className="absolute -top-6 left-10 h-16 w-auto rotate-12 object-contain drop-shadow-[0_8px_14px_rgba(10,20,38,0.4)] lg:h-20"
+          />
+          <img
+            src="/assets/ui/gem.webp"
+            alt=""
+            draggable={false}
+            className="absolute bottom-14 left-32 h-14 w-auto -rotate-20 object-contain drop-shadow-[0_8px_12px_rgba(10,20,38,0.38)] lg:left-40 lg:h-16"
+          />
+          <img
+            src="/assets/ui/gem.webp"
+            alt=""
+            draggable={false}
+            className="absolute bottom-2 left-16 h-12 w-auto rotate-30 object-contain drop-shadow-[0_6px_10px_rgba(10,20,38,0.38)] lg:h-14"
+          />
+          <img
+            src="/assets/ui/gem.webp"
+            alt=""
+            draggable={false}
+            className="absolute bottom-5 left-52 h-11 w-auto -rotate-12 object-contain drop-shadow-[0_6px_10px_rgba(10,20,38,0.35)] lg:left-64 lg:h-13"
           />
         </div>
 
-        {/* Right Treasure Trove: Chest, Coins & Gems */}
-        <div aria-hidden="true" className="pointer-events-none absolute -bottom-4 -right-6 z-[5] hidden select-none md:block">
+        {/* Right Treasure Trove (swapped orientation facing inward + messy scattered loot) */}
+        <div aria-hidden="true" className="pointer-events-none absolute -bottom-4 -right-4 z-[5] hidden select-none md:block">
           <img
             src="/assets/ui/chest.webp"
             alt=""
             draggable={false}
-            className="h-36 w-auto scale-x-[-1] rotate-6 object-contain drop-shadow-[0_12px_18px_rgba(10,20,38,0.45)] lg:h-44"
+            className="h-40 w-auto -rotate-6 object-contain drop-shadow-[0_12px_18px_rgba(10,20,38,0.45)] lg:h-48"
           />
           <img
             src="/assets/ui/coins.webp"
             alt=""
             draggable={false}
-            className="absolute -bottom-1 right-24 h-20 w-auto -rotate-12 object-contain drop-shadow-[0_8px_12px_rgba(10,20,38,0.4)] lg:right-28 lg:h-24"
-          />
-          <img
-            src="/assets/ui/gem.webp"
-            alt=""
-            draggable={false}
-            className="absolute -top-7 right-8 h-16 w-auto rotate-12 object-contain drop-shadow-[0_8px_14px_rgba(10,20,38,0.4)] lg:h-20"
+            className="absolute -bottom-1 right-24 h-20 w-auto rotate-12 object-contain drop-shadow-[0_8px_12px_rgba(10,20,38,0.4)] lg:right-32 lg:h-24"
           />
           <img
             src="/assets/ui/coins.webp"
             alt=""
             draggable={false}
-            className="absolute bottom-10 -right-1 h-16 w-auto rotate-12 object-contain drop-shadow-[0_6px_10px_rgba(10,20,38,0.35)] lg:h-20"
+            className="absolute bottom-1 right-44 h-16 w-auto -rotate-24 object-contain drop-shadow-[0_6px_10px_rgba(10,20,38,0.38)] lg:right-52 lg:h-20"
+          />
+          <img
+            src="/assets/ui/coins.webp"
+            alt=""
+            draggable={false}
+            className="absolute bottom-8 right-2 h-16 w-auto -rotate-12 object-contain drop-shadow-[0_6px_10px_rgba(10,20,38,0.35)] lg:h-20"
+          />
+          <img
+            src="/assets/ui/coins.webp"
+            alt=""
+            draggable={false}
+            className="absolute -bottom-2 right-60 h-14 w-auto rotate-18 object-contain drop-shadow-[0_6px_10px_rgba(10,20,38,0.35)] lg:right-72 lg:h-16"
           />
           <img
             src="/assets/ui/gem.webp"
             alt=""
             draggable={false}
-            className="absolute bottom-14 right-28 h-14 w-auto -rotate-18 object-contain drop-shadow-[0_8px_12px_rgba(10,20,38,0.38)] lg:right-36 lg:h-16"
+            className="absolute -top-6 right-10 h-16 w-auto -rotate-12 object-contain drop-shadow-[0_8px_14px_rgba(10,20,38,0.4)] lg:h-20"
+          />
+          <img
+            src="/assets/ui/gem.webp"
+            alt=""
+            draggable={false}
+            className="absolute bottom-14 right-32 h-14 w-auto rotate-20 object-contain drop-shadow-[0_8px_12px_rgba(10,20,38,0.38)] lg:right-40 lg:h-16"
+          />
+          <img
+            src="/assets/ui/gem.webp"
+            alt=""
+            draggable={false}
+            className="absolute bottom-2 right-16 h-12 w-auto -rotate-30 object-contain drop-shadow-[0_6px_10px_rgba(10,20,38,0.38)] lg:h-14"
+          />
+          <img
+            src="/assets/ui/gem.webp"
+            alt=""
+            draggable={false}
+            className="absolute bottom-5 right-52 h-11 w-auto rotate-12 object-contain drop-shadow-[0_6px_10px_rgba(10,20,38,0.35)] lg:right-64 lg:h-13"
           />
         </div>
 
