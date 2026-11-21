@@ -26,24 +26,64 @@ export function NewsSection() {
     <section
       id="news"
       aria-labelledby="news-heading"
-      className="relative overflow-hidden bg-[#FAF4E6] py-20 sm:py-24 lg:py-28"
+      className="relative overflow-hidden bg-[#F5E8CE] py-20 sm:py-24 lg:py-28"
     >
-      {/* Subtle organic top seam connecting savannah grass to warm parchment */}
+      {/* Hand-drawn parchment map backdrop */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute top-0 left-0 right-0 h-5 bg-gradient-to-b from-[#d8ef82]/45 to-transparent"
+        className="pointer-events-none absolute inset-0 bg-cover bg-center opacity-28"
+        style={{ backgroundImage: "url('/assets/news/parchment-bg.webp')" }}
       />
 
-      <div className="relative mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
-        {/* Section Heading */}
-        <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
-          <h2
-            id="news-heading"
-            className="font-display text-3xl font-black tracking-[-0.02em] text-[#2B1C10] sm:text-4xl lg:text-[2.65rem]"
-          >
-            Catch Up With Nerdius
-          </h2>
-          <p className="font-body text-base font-bold text-[#6E533B]">
+      {/* Subtle diagonal two-tone split (echoing reference Image 1) */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 bg-[#FFF8E8]/65"
+        style={{ clipPath: "polygon(0 0, 58% 0, 38% 100%, 0 100%)" }}
+      />
+
+      {/* Organic top seam connecting Savannah Hero into News */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute top-0 left-0 right-0 h-6 bg-gradient-to-b from-[#d8ef82]/60 to-transparent"
+      />
+
+      {/* Hand-drawn Savannah spiral forest & math trees framing the bottom */}
+      <img
+        src="/assets/savannah/5.webp"
+        alt=""
+        aria-hidden="true"
+        draggable={false}
+        className="pointer-events-none absolute bottom-0 left-0 w-full max-w-none select-none object-cover object-bottom opacity-20"
+      />
+      <img
+        src="/assets/savannah/8.webp"
+        alt=""
+        aria-hidden="true"
+        draggable={false}
+        className="pointer-events-none absolute -bottom-6 -right-16 hidden w-[440px] select-none opacity-30 lg:block"
+      />
+
+      <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
+        {/* Section Heading on Hand-Drawn Wood Plank */}
+        <div className="mb-10 flex flex-wrap items-center justify-between gap-4">
+          <div className="relative inline-flex w-[290px] items-center justify-center drop-shadow-[0_6px_12px_rgba(43,28,16,0.22)] sm:w-[350px]">
+            <img
+              src="/assets/ui/plank-bar.webp"
+              alt=""
+              aria-hidden="true"
+              draggable={false}
+              className="h-auto w-full select-none object-contain"
+            />
+            <h2
+              id="news-heading"
+              className="font-playful woodplank-text-shadow absolute inset-0 flex items-center justify-center pb-0.5 text-xl tracking-wide text-white sm:text-2xl"
+            >
+              Catch Up With Nerdius
+            </h2>
+          </div>
+
+          <p className="rounded-xl border-2 border-[#2B1C10]/20 bg-[#FFFDF7]/85 px-4 py-2 font-body text-sm font-extrabold text-[#5C4430] backdrop-blur-xs sm:text-base">
             Latest updates, patch notes &amp; adventurer notices
           </p>
         </div>
@@ -221,13 +261,14 @@ export function NewsSection() {
                 className="block w-full shrink-0 select-none"
               />
 
-              {/* Scroll Repeating Middle Body */}
+              {/* Scroll Repeating Middle Body (clipped 4% sides to hide source PNG stray edge dots) */}
               <div
                 className="-my-[2px] flex min-h-0 flex-1 flex-col px-[13%] py-2"
                 style={{
                   backgroundImage: "url('/assets/ui/scroll-mid.png')",
                   backgroundRepeat: "repeat-y",
                   backgroundSize: "100% auto",
+                  clipPath: "inset(0 4% 0 4%)",
                 }}
               >
                 {/* Header inside Scroll */}
