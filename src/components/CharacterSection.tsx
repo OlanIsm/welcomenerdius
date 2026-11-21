@@ -113,10 +113,10 @@ export function CharacterSection() {
           </p>
         </div>
 
-        {/* 3-Column Showcase Grid */}
-        <div className="grid grid-cols-1 items-center gap-10 lg:min-h-[510px] lg:grid-cols-12 lg:gap-6">
-          {/* LEFT COLUMN: Character Dossier & Backstory */}
-          <div className="order-2 flex flex-col items-start lg:order-1 lg:col-span-4 lg:min-h-[470px] lg:pr-10 xl:pr-14">
+        {/* 3-Column Showcase Grid (fixed desktop height so layout never shifts between characters) */}
+        <div className="grid grid-cols-1 items-center gap-10 lg:h-[580px] lg:grid-cols-12 lg:gap-6">
+          {/* LEFT COLUMN: Character Dossier & Backstory (top-anchored so elements stay fixed) */}
+          <div className="order-2 flex flex-col items-start lg:order-1 lg:col-span-4 lg:self-start lg:pt-6 lg:pr-10 xl:pr-14">
             {/* Faction / Archetype Pill */}
             <div className="mb-1.5 inline-flex items-center gap-2 rounded-full border-2 border-[#2B1C10] bg-[#4A3321] px-3.5 py-1 font-body text-xs font-extrabold tracking-wider text-[#FFF1CC] uppercase">
               <span
@@ -263,7 +263,7 @@ export function CharacterSection() {
             </div>
 
             {/* Selector Grid + Prev/Next Chevrons */}
-            <div className="flex items-center gap-4 sm:gap-5">
+            <div className="flex items-center gap-6 sm:gap-7">
               <button
                 type="button"
                 onClick={handlePrev}
@@ -276,7 +276,7 @@ export function CharacterSection() {
               <div
                 role="listbox"
                 aria-label="Select a character"
-                className="grid grid-cols-2 gap-3.5 sm:gap-4"
+                className="grid grid-cols-2 gap-5 sm:gap-6"
               >
                 {CHARACTERS.map((char, idx) => {
                   const isSelected = idx === activeIndex;
