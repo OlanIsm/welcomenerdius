@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { Volume2, VolumeX, ChevronsLeft, ChevronsRight, Sparkles } from "lucide-react";
 import { CHARACTERS } from "../data/charactersData";
-import { SpriteCanvas } from "./SpriteCanvas";
+import { SpriteCanvas, preloadSpriteSheet } from "./SpriteCanvas";
 
 export function CharacterSection() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -23,6 +23,13 @@ export function CharacterSection() {
   };
 
   useEffect(() => {
+    // Preload all character spritesheets once so switching & toggling animations is instant
+    CHARACTERS.forEach((char) => {
+      char.animations.forEach((anim) => {
+        preloadSpriteSheet(anim.jsonUrl, anim.imageUrl).catch(() => {});
+      });
+    });
+
     return () => {
       if (audioRef.current) {
         audioRef.current.pause();
@@ -193,12 +200,12 @@ export function CharacterSection() {
                 className="pointer-events-none absolute bottom-6 h-8 w-52 rounded-full bg-[#2B1C10]/16 blur-md"
               />
               <SpriteCanvas
-                key={`${character.id}-${currentAnim.label}`}
                 jsonUrl={currentAnim.jsonUrl}
                 imageUrl={currentAnim.imageUrl}
                 fps={currentAnim.fps}
+                fallbackSrc={character.portraitUrl}
                 alt={`${character.name} — ${currentAnim.label} animation`}
-                className="relative z-10 h-full w-full object-contain drop-shadow-[0_14px_20px_rgba(43,28,16,0.18)]"
+                className="relative z-10 h-full w-full drop-shadow-[0_14px_20px_rgba(43,28,16,0.18)]"
               />
             </div>
           </div>
