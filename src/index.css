@@ -1,0 +1,179 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Rubik";
+  src: url("/assets/fonts/Rubik_700Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Rubik";
+  src: url("/assets/fonts/Rubik_900Black.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Nunito";
+  src: url("/assets/fonts/Nunito-Variable.ttf") format("truetype");
+  font-weight: 200 1000;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PlayfulRocket";
+  src: url("/assets/fonts/PlayfulRocket-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --color-sky: #64b0f6;
+  --color-savannah: #ddf28b;
+  --color-ink: #2b1c10;
+  --color-gold: #ffb830;
+  --color-gold-deep: #e08214;
+  --color-cream: #fff9ec;
+  --font-display: "Rubik", system-ui, -apple-system, sans-serif;
+  --font-body: "Nunito", system-ui, -apple-system, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-body);
+  color: var(--color-ink);
+  background-color: #f7f3e8;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: rgba(255, 184, 48, 0.42);
+  color: var(--color-ink);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f0eadc;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c79a58;
+  border-radius: 999px;
+  border: 2px solid #f0eadc;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a87b3b;
+}
+
+:focus-visible {
+  outline: 3px solid #ffb830;
+  outline-offset: 3px;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+.hero-text-shadow {
+  text-shadow:
+    0 2px 14px rgba(18, 52, 98, 0.34),
+    0 1px 3px rgba(18, 52, 98, 0.28);
+}
+
+.nav-link-shadow {
+  text-shadow: 0 1px 8px rgba(18, 52, 98, 0.32);
+}
+
+.font-playful {
+  font-family: "PlayfulRocket", var(--font-display);
+}
+
+.btn-woodplank {
+  filter: drop-shadow(0 8px 16px rgba(32, 20, 10, 0.32));
+  transition:
+    transform 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.btn-woodplank:hover {
+  transform: translateY(-3px) scale(1.04);
+  filter: drop-shadow(0 12px 22px rgba(32, 20, 10, 0.38)) brightness(1.05);
+}
+
+.btn-woodplank:active {
+  transform: translateY(1px) scale(0.98);
+  filter: drop-shadow(0 4px 10px rgba(32, 20, 10, 0.28)) brightness(0.98);
+}
+
+.woodplank-text-shadow {
+  text-shadow:
+    0 2px 0 rgba(43, 24, 10, 0.85),
+    0 4px 10px rgba(43, 24, 10, 0.45);
+}
+
+@keyframes gentle-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(5px);
+  }
+}
+
+@keyframes island-float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-9px);
+  }
+}
+
+.animate-gentle-bob {
+  animation: gentle-bob 2.6s ease-in-out infinite;
+}
+
+.animate-island-slow {
+  animation: island-float 6.5s ease-in-out infinite;
+}
+
+.animate-island-mid {
+  animation: island-float 5.4s ease-in-out 1.2s infinite;
+}
+
+.animate-island-gentle {
+  animation: island-float 7.2s ease-in-out 0.6s infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-gentle-bob,
+  .animate-island-slow,
+  .animate-island-mid,
+  .animate-island-gentle {
+    animation: none;
+  }
+  .btn-woodplank {
+    transition: none;
+  }
+}
