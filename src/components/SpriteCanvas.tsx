@@ -113,12 +113,14 @@ export function SpriteCanvas({
       const start = performance.now();
       const drawFrame = (now: number) => {
         if (cancelled) return;
-        const elapsed = (now - start) / 1000;
+        // Clamp >= 0 because first rAF timestamp can precede performance.now(), which made Math.floor(-eps) % len === -1
+        const elapsed = Math.max(0, (now - start) / 1000);
         const idx =
           prefersReducedMotion || !active
             ? 0
             : Math.floor(elapsed * fps) % sheet.frames.length;
         const f = sheet.frames[idx];
+        if (!f) return;
 
         ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
         ctx.clearRect(0, 0, size, size);

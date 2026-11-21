@@ -6,6 +6,11 @@ export interface FeatureSlide {
   bgImage: string;
   foregroundImage: string;
   foregroundAlt: string;
+  foregroundSprite?: {
+    jsonUrl: string;
+    imageUrl: string;
+    fps: number;
+  };
   accentColor: string;
 }
 
@@ -29,7 +34,12 @@ export const FEATURES: FeatureSlide[] = [
       "Chain right answers to power up Olan's staff and outsmart tricky foes like Hannah and Snarger.",
     bgImage: "/assets/news/merlins-room.webp",
     foregroundImage: "/assets/features/mc.webp",
-    foregroundAlt: "Olan wielding his glowing Crescent Staff",
+    foregroundAlt: "Olan casting a Crescent Staff attack",
+    foregroundSprite: {
+      jsonUrl: "/assets/characters/olan-attack/spritesheet.json",
+      imageUrl: "/assets/characters/olan-attack/spritesheet.png",
+      fps: 10,
+    },
     accentColor: "#5AA9F8",
   },
   {

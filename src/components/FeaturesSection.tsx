@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ChevronsLeft, ChevronsRight } from "lucide-react";
 import { FEATURES } from "../data/featuresData";
+import { SpriteCanvas } from "./SpriteCanvas";
 
 export function FeaturesSection() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -155,12 +156,24 @@ export function FeaturesSection() {
 
                   {/* Center-Bottom Foreground Character / Game Asset */}
                   <div className="relative z-10 flex h-[54%] items-center justify-center px-5 pt-2">
-                    <img
-                      src={slide.foregroundImage}
-                      alt={slide.foregroundAlt}
-                      draggable={false}
-                      className="max-h-full w-auto object-contain drop-shadow-[0_12px_18px_rgba(0,0,0,0.45)]"
-                    />
+                    {slide.foregroundSprite ? (
+                      <SpriteCanvas
+                        jsonUrl={slide.foregroundSprite.jsonUrl}
+                        imageUrl={slide.foregroundSprite.imageUrl}
+                        fps={slide.foregroundSprite.fps}
+                        active={isCenter}
+                        fallbackSrc={slide.foregroundImage}
+                        alt={slide.foregroundAlt}
+                        className="h-full w-full drop-shadow-[0_12px_18px_rgba(0,0,0,0.45)]"
+                      />
+                    ) : (
+                      <img
+                        src={slide.foregroundImage}
+                        alt={slide.foregroundAlt}
+                        draggable={false}
+                        className="max-h-full w-auto object-contain drop-shadow-[0_12px_18px_rgba(0,0,0,0.45)]"
+                      />
+                    )}
                   </div>
 
                   {/* Bottom Title & Description */}
