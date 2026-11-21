@@ -82,4 +82,4 @@
 - [x] Phase 2: Build News & Updates Section
 - [x] Phase 3: Build Character Showcase Section
 - [x] Phase 4: Build Features Section
-- [ ] Phase 5: Build Ending CTA, Footer, Privacy Policy & Terms of Service pages
+- [x] Phase 5: Build Ending CTA, Footer, Privacy Policy & Terms of Service pages
