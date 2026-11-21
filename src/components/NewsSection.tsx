@@ -175,6 +175,15 @@ export function NewsSection() {
                     {featuredItem.bannerFit !== "contain" && (
                       <div className="absolute inset-0 bg-gradient-to-t from-[#2B1C10]/70 via-[#2B1C10]/15 to-transparent" />
                     )}
+                    {featuredItem.bannerOverlayImage && (
+                      <img
+                        src={featuredItem.bannerOverlayImage}
+                        alt=""
+                        aria-hidden="true"
+                        draggable={false}
+                        className="pointer-events-none absolute inset-x-0 bottom-2 mx-auto h-[78%] w-auto select-none object-contain drop-shadow-[0_12px_20px_rgba(0,0,0,0.55)]"
+                      />
+                    )}
                     <img
                       src="/assets/nerdius_title.png"
                       alt="Nerdius"

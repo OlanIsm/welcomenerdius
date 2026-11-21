@@ -9,6 +9,7 @@ export interface NewsItem {
   details: string[];
   bannerType: "mascot" | "image";
   bannerImage?: string;
+  bannerOverlayImage?: string;
   bannerFit?: "cover" | "contain";
   bannerHeadline?: string;
 }
@@ -101,6 +102,7 @@ export const NEWS_ITEMS: NewsItem[] = [
     ],
     bannerType: "image",
     bannerImage: "/assets/news/merlins-room.webp",
+    bannerOverlayImage: "/assets/news/royal-armor.webp",
   },
   {
     id: "scheduled-maintenance",
@@ -115,6 +117,7 @@ export const NEWS_ITEMS: NewsItem[] = [
     ],
     bannerType: "image",
     bannerImage: "/assets/news/merlins-room.webp",
+    bannerOverlayImage: "/assets/news/royal-armor.webp",
   },
 ];
 
