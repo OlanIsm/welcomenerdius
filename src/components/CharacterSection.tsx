@@ -9,6 +9,7 @@ export function CharacterSection() {
   const [animIndex, setAnimIndex] = useState(0);
   const [isPlayingVoice, setIsPlayingVoice] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const previewRef = useRef<HTMLDivElement | null>(null);
 
   const character = CHARACTERS[activeIndex];
   const currentAnim = character.animations[animIndex] ?? character.animations[0];
@@ -45,6 +46,9 @@ export function CharacterSection() {
     setPrevIndex(activeIndex);
     setActiveIndex(index);
     setAnimIndex(0);
+    if (window.innerWidth < 1024) {
+      previewRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
   };
 
   const handlePrev = () => {
@@ -203,7 +207,10 @@ export function CharacterSection() {
           </div>
 
           {/* CENTER COLUMN: Live Animated Character with Slide-Left / Enter-From-Right Transition */}
-          <div className="order-1 flex flex-col items-center justify-center lg:order-2 lg:col-span-4">
+          <div
+            ref={previewRef}
+            className="order-1 flex scroll-mt-24 flex-col items-center justify-center lg:order-2 lg:col-span-4"
+          >
             <div className="relative flex h-[300px] w-full max-w-[380px] items-center justify-center overflow-hidden sm:h-[360px] lg:h-[420px]">
               {/* Soft grounded studio shadow */}
               <div

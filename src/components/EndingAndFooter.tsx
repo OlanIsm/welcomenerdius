@@ -224,7 +224,7 @@ export function EndingAndFooter() {
       </div>
 
       {/* BOTTOM LEGAL & INFO FOOTER */}
-      <div className="bg-[#140F0B] text-[#E6D9C5]">
+      <div className="bg-[#140F0B] pb-[env(safe-area-inset-bottom)] text-[#E6D9C5]">
         <div className="mx-auto max-w-7xl px-5 py-10 sm:px-8 lg:px-12">
           <div className="flex flex-col items-start justify-between gap-8 border-b border-white/10 pb-8 md:flex-row md:items-center">
             {/* App Icon + Game Info */}

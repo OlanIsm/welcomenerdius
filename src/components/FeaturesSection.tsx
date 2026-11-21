@@ -164,7 +164,7 @@ export function FeaturesSection() {
                         active={isCenter}
                         fallbackSrc={slide.foregroundImage}
                         alt={slide.foregroundAlt}
-                        className="h-full w-full drop-shadow-[0_12px_18px_rgba(0,0,0,0.45)]"
+                        className="h-full w-full scale-[1.65] translate-y-4 drop-shadow-[0_12px_18px_rgba(0,0,0,0.45)]"
                       />
                     ) : (
                       <img
