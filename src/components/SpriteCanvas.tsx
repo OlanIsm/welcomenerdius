@@ -101,6 +101,8 @@ export function SpriteCanvas({
       "(prefers-reduced-motion: reduce)"
     ).matches;
 
+    const effectiveFps = prefersReducedMotion ? Math.max(4, Math.floor(fps * 0.6)) : fps;
+
     const size = 420;
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
     canvas.width = size * dpr;
@@ -115,10 +117,9 @@ export function SpriteCanvas({
         if (cancelled) return;
         // Clamp >= 0 because first rAF timestamp can precede performance.now(), which made Math.floor(-eps) % len === -1
         const elapsed = Math.max(0, (now - start) / 1000);
-        const idx =
-          prefersReducedMotion || !active
-            ? 0
-            : Math.floor(elapsed * fps) % sheet.frames.length;
+        const idx = !active
+          ? 0
+          : Math.floor(elapsed * effectiveFps) % sheet.frames.length;
         const f = sheet.frames[idx];
         if (!f) return;
 
@@ -133,7 +134,7 @@ export function SpriteCanvas({
 
         ctx.drawImage(sheet.image, f.x, f.y, f.w, f.h, drawX, drawY, drawW, drawH);
 
-        if (!prefersReducedMotion && active) {
+        if (active) {
           rafId = requestAnimationFrame(drawFrame);
         }
       };
