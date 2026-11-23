@@ -32,6 +32,23 @@ export const NEWS_TABS: { id: NewsCategory; label: string }[] = [
 
 export const NEWS_ITEMS: NewsItem[] = [
   {
+    id: "v1-1-leaderboard-quests-qol",
+    category: "important",
+    date: "2026.11.23",
+    title: "Nerdius v1.1 Update — Live Leaderboard, Daily & Weekly Quests, PDF QoL & Language Setting!",
+    summary:
+      "Compete on the hourly Leaderboard, claim Quest milestone chests, enjoy smoother PDF uploads & Language Settings, plus 300 free Gems in your Mail!",
+    details: [
+      "New Live Leaderboard across Adventure Cleared, Challenge Cleared, Highest Streak, and XP — updated every hour with clickable player Namecard & Badges.",
+      "New Daily & Weekly Quest Board with milestone reward chests and one-tap Claim All.",
+      "PDF Upload Quality-of-Life improvements for smoother scroll forging and clearer progress feedback.",
+      "New Language Setting support so you can tailor your study experience to your preferred language.",
+      "Compact Profile with 3 selectable character profiles (Olan, Hannah, Snagger), Daily Chapter Streak, and 300 Gems waiting in your in-game Mail!",
+    ],
+    bannerType: "mascot",
+    bannerHeadline: "v1.1 UPDATE",
+  },
+  {
     id: "savannah-launch",
     category: "important",
     date: "2026.11.21",
