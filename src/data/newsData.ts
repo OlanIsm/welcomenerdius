@@ -32,6 +32,23 @@ export const NEWS_TABS: { id: NewsCategory; label: string }[] = [
 
 export const NEWS_ITEMS: NewsItem[] = [
   {
+    id: "v1-2-volcano-pptx-battle-polish",
+    category: "important",
+    date: "2026.11.26",
+    title: "Nerdius v1.2 Update — Volcano Biome, PPTX/DOCX Support, Battle Polish & Mobile Speed Boost!",
+    summary:
+      "Explore the new Volcano biome in Chapter 2, upload PowerPoint & Word slides, enjoy the new animated Battle Progress Bar, Streak Ignited celebrations, and much faster mobile loading!",
+    details: [
+      "New Volcano Biome for Chapter 2 with hand-drawn multi-layer volcanic parallax and a dedicated battle soundtrack.",
+      "Upload .pptx (PowerPoint) and .docx (Word) lecture files alongside PDFs, with smarter chapter clustering for long decks and deeper quiz progression for concise notes.",
+      "New animated Battle Progress Bar with centered x/10 tracker, clearer defeat feedback (hero defeat animation & sad defeat jingle), new XP icon, dynamic reward layout, and a bigger Grade stamp.",
+      "New Daily Streak Ignited celebration screen when you complete a chapter and light your daily study flame.",
+      "Major mobile performance & asset optimization (compressed WebP sprites and Opus audio) for faster loading, smoother 60fps battles, and automatic session refresh.",
+    ],
+    bannerType: "mascot",
+    bannerHeadline: "v1.2 UPDATE",
+  },
+  {
     id: "v1-1-leaderboard-quests-qol",
     category: "important",
     date: "2026.11.23",
